@@ -6,6 +6,20 @@ pub struct BinaryTree {
 
 impl BinaryTree {
     pub fn new(depth: usize) -> Self {
-        Self { depth, leaves: vec![] }
+        assert!(
+            depth < usize::BITS as usize,
+            "depth must leave room for a 2^depth capacity"
+        );
+        Self { depth, leaves: Vec::new() }
     }
+
+    pub fn depth(&self) -> usize {
+        self.depth
+    }
+
+    pub fn len(&self) -> usize {
+        self.leaves.len()
+    }
+    
+    
 }
