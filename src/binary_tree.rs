@@ -10,7 +10,12 @@ impl BinaryTree {
             depth < usize::BITS as usize,
             "depth must leave room for a 2^depth capacity"
         );
-        Self { depth, leaves: Vec::new() }
+        let capacity = 1usize << depth;
+        let mut leaves = Vec::with_capacity(capacity);
+        for _ in 0..capacity {
+            leaves.push(vec![0u8]);
+        }
+        Self { depth, leaves }
     }
 
     pub fn depth(&self) -> usize {
